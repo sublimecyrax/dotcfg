@@ -1,0 +1,55 @@
+#   ░▀█▀░▀▀█░█▀▀░▀█▀░█▀█░▀█▀░█░█░█▀▀
+#   ░░█░░░▀▄░▀▀█░░█░░█▀█░░█░░█░█░▀▀█
+#   ░▀▀▀░▀▀░░▀▀▀░░▀░░▀░▀░░▀░░▀▀▀░▀▀▀
+
+
+general {
+        output_format = "i3bar"
+        interval = 1
+        colors = true
+        color_good = "#769070"
+        color_degraded = "#60867f"
+        color_bad = "#c96666"
+}
+
+# order += "cpu_usage 0"
+#order += "disk /root"
+order += "wireless wlp0s29u1u3"
+#order += "amixer"
+order += "battery 1"
+order += "tztime local"
+
+wireless wlp0s29u1u3 {
+        format_up = "   %essid "
+        format_down = " Not Connected "
+}
+
+battery 1 {
+        format = "%status%percentage "
+        low_threshold = 11
+        threshold_type = percentage
+        status_chr = "  "
+        status_bat = "  "
+        status_full = "  "
+}
+
+tztime local {
+        format = "   %H.%M "
+}
+
+cpu_usage {
+    format = "  CPU: %usage"
+}
+
+disk "/root" {
+        format = "   %percentage_used of %total "
+            prefix_type = custom
+}
+
+volume master {
+        format = "   %volume "
+        format_muted = "   %volume "
+        device = "default"
+        mixer = "Headphone"
+        mixer_idx = 0
+}
